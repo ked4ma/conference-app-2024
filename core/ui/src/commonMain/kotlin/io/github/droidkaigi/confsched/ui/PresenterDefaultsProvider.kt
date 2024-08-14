@@ -14,6 +14,7 @@ fun <T> providePresenterDefaults(
     val handler = remember(userMessageStateHolder) {
         object : ComposeEffectErrorHandler {
             override suspend fun emit(throwable: Throwable) {
+                println(throwable::class)
                 val a = throwable.toApplicationErrorMessage()
                 userMessageStateHolder.showMessage(
                     message = a,
